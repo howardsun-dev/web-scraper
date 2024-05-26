@@ -1,6 +1,3 @@
-Here is the corrected `README.md` markup:
-
-```markdown
 # Web Scraper Project
 
 ## Overview
@@ -37,4 +34,3 @@ Start the server:
 npm start
 ```
 Visit [http://localhost:3000](http://localhost:3000) in your browser to see the scraped articles.
-```

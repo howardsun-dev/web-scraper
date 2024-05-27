@@ -11,10 +11,10 @@ const PORT = process.env.PORT || 3000;
 
 const URL = 'https://www.theguardian.com/us';
 
-axios(URL)
-  .then(response => {
-    const html = response.data;
-    const $ = cheerio.load(html); // This loads the HTML and returns a Cheerio object
+async function scrapeAndSaveArticles() {
+  try {
+    const html = await axios.get(URL);
+    const $ = cheerio.load(html.data); // This loads the HTML and returns a Cheerio object
     const articles: { title: string; url: string }[] = [];
 
     $('[class^="dcr-"]').each(function () {
@@ -23,13 +23,38 @@ axios(URL)
       articles.push({ title, url: url || '' });
     });
 
-    // console.log(articles);
+    // Save articles to a file
     fs.writeFile('articles.json', JSON.stringify(articles), err => {
       if (err) throw err;
       console.log('Articles saved to articles.json');
     });
-  })
-  .catch(err => console.log(err));
+  } catch (err) {
+    console.error('Error during scraping:', err);
+  }
+}
+
+scrapeAndSaveArticles();
+
+// Axios chain
+// axios(URL)
+//   .then(response => {
+//     const html = response.data;
+//     const $ = cheerio.load(html); // This loads the HTML and returns a Cheerio object
+//     const articles: { title: string; url: string }[] = [];
+
+//     $('[class^="dcr-"]').each(function () {
+//       const title = $(this).text();
+//       const url = $(this).find('a').attr('href');
+//       articles.push({ title, url: url || '' });
+//     });
+
+//     // console.log(articles);
+//     fs.writeFile('articles.json', JSON.stringify(articles), err => {
+//       if (err) throw err;
+//       console.log('Articles saved to articles.json');
+//     });
+//   })
+//   .catch(err => console.log(err));
 
 app.listen(PORT, () => {
   console.log(`[server] Server listening at http://localhost:${PORT}`);

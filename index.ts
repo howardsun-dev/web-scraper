@@ -23,7 +23,7 @@ axios(URL)
       articles.push({ title, url: url || '' });
     });
 
-    console.log(articles);
+    // console.log(articles);
     fs.writeFile('articles.json', JSON.stringify(articles), err => {
       if (err) throw err;
       console.log('Articles saved to articles.json');

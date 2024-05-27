@@ -1,7 +1,7 @@
 # Web Scraper Project
 
 ## Overview
-This project is a web scraping application designed to extract articles from The Guardian's US website. It utilizes modern technologies such as Express for server-side operations, Axios for HTTP requests, and Cheerio for parsing HTML content. The primary goal is to demonstrate efficient web scraping techniques while adhering to best practices for maintainable and scalable code.
+This project is a web scraping application designed to extract from websites. It utilizes modern technologies such as Express for server-side operations, Axios for HTTP requests, and Cheerio for parsing HTML content. The primary goal is to demonstrate efficient web scraping techniques while adhering to best practices for maintainable and scalable code.
 
 ## Features
 - Extracts article titles and URLs from The Guardian's US homepage.

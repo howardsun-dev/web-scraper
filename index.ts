@@ -18,9 +18,6 @@ async function startPuppeteer() {
   const page = await browser.newPage();
 
   try {
-    // Add a delay to ensure the main frame is ready
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second
-
     await page.goto(URL, { waitUntil: 'networkidle2' }); // Wait until the network is idle
 
     // Ensure the directory exists
@@ -71,7 +68,7 @@ async function scrapeAndSaveArticles() {
   }
 }
 
-// Axios chain
+// Axios Promise chain
 // axios(URL)
 //   .then(response => {
 //     const html = response.data;
@@ -92,7 +89,7 @@ async function scrapeAndSaveArticles() {
 //   })
 //   .catch(err => console.log(err));
 async function main() {
-  // await scrapeAndSaveArticles();
+  await scrapeAndSaveArticles();
   await startPuppeteer();
 }
 

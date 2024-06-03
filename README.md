@@ -33,4 +33,4 @@ Start the server:
 ```sh
 npm start
 ```
-Visit [http://localhost:3000](http://localhost:3000) in your browser to see the scraped articles.
+Visit scrapedData folder to see the scraped articles.
